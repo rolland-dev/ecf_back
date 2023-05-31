@@ -1,0 +1,122 @@
+<?php
+
+require_once "../connect.php";
+
+?>
+
+<?php
+
+
+$sql = "
+INSERT INTO livres (titre, auteur, editeur, categories)
+VALUES
+    ('Harry Potter à l\'école des sorciers', 'J.K. Rowling', 'Gallimard Jeunesse', 'Jeunesse'),
+    ('Le Petit Prince', 'Antoine de Saint-Exupéry', 'Gallimard Jeunesse', 'Jeunesse'),
+    ('Charlie et la chocolaterie', 'Roald Dahl', 'Gallimard Jeunesse', 'Jeunesse'),
+    ('Le Hobbit', 'J.R.R. Tolkien', 'Pocket Jeunesse', 'Jeunesse'),
+    ('Alice au pays des merveilles', 'Lewis Carroll', 'Gallimard Jeunesse', 'Jeunesse'),
+    ('Matilda', 'Roald Dahl', 'Gallimard Jeunesse', 'Jeunesse'),
+    ('Les Aventures de Tom Sawyer', 'Mark Twain', 'Hachette Jeunesse', 'Jeunesse'),
+    ('Le Lion, la Sorcière blanche et l\'Armoire magique', 'C.S. Lewis', 'Gallimard Jeunesse', 'Jeunesse'),
+    ('Le Petit Nicolas', 'René Goscinny', 'Folio Junior', 'Jeunesse'),
+    ('Les Malheurs de Sophie', 'Comtesse de Ségur', 'Flammarion Jeunesse', 'Jeunesse'),
+    ('Les Désastreuses Aventures des Orphelins Baudelaire', 'Lemony Snicket', 'Nathan Jeunesse', 'Jeunesse'),
+    ('Percy Jackson, Tome 1 : Le Voleur de foudre', 'Rick Riordan', 'Albin Michel Jeunesse', 'Jeunesse'),
+    ('Harry Potter et la Chambre des Secrets', 'J.K. Rowling', 'Gallimard Jeunesse', 'Jeunesse'),
+    ('Les Hauts de Hurle-Vent', 'Emily Brontë', 'Folio Junior', 'Jeunesse'),
+    ('Les Royaumes du Nord', 'Philip Pullman', 'Gallimard Jeunesse', 'Jeunesse'),
+    ('Le Club des Cinq', 'Enid Blyton', 'Hachette Jeunesse', 'Jeunesse'),
+    ('Momo', 'Michael Ende', 'Gallimard Jeunesse', 'Jeunesse'),
+    ('Les Contes de Beedle le Barde', 'J.K. Rowling', 'Gallimard Jeunesse', 'Jeunesse'),
+    ('Le Magicien d\'Oz', 'L. Frank Baum', 'Flammarion Jeunesse', 'Jeunesse'),
+    ('Le Petit Chaperon rouge', 'Charles Perrault', 'Gallimard Jeunesse', 'Jeunesse'),
+    ('Millénium, Tome 1 : Les Hommes qui n\'aimaient pas les femmes', 'Stieg Larsson', 'Actes Sud', 'Policier'),
+    ('Le Nom de la Rose', 'Umberto Eco', 'Grasset', 'Policier'),
+    ('Sherlock Holmes : Une étude en rouge', 'Arthur Conan Doyle', 'Le Livre de Poche', 'Policier'),
+    ('Gone Girl', 'Gillian Flynn', 'Le Livre de Poche', 'Policier'),
+    ('L\'Étrangleur de Cater Street', 'Anne Perry', '10/18', 'Policier'),
+    ('La Fille du train', 'Paula Hawkins', 'Pocket', 'Policier'),
+    ('Anges et démons', 'Dan Brown', 'Le Livre de Poche', 'Policier'),
+    ('Les Rivières pourpres', 'Jean-Christophe Grangé', 'Le Livre de Poche', 'Policier'),
+    ('Mort sur le Nil', 'Agatha Christie', 'Le Masque', 'Policier'),
+    ('Le Silence des agneaux', 'Thomas Harris', 'Le Livre de Poche', 'Policier'),
+    ('La Trilogie du Baztán, Tome 1 : Le Gardien invisible', 'Dolores Redondo', 'Gallimard', 'Policier'),
+    ('Les Enquêtes de l\'inspecteur Higgins - Tome 1 : Le Crime de la momie', 'Christian Jacq', 'XO', 'Policier'),
+    ('Le Poète', 'Michael Connelly', 'Calmann-Lévy', 'Policier'),
+    ('La Jeune Fille et la Nuit', 'Guillaume Musso', 'Pocket', 'Policier'),
+    ('Le Mystère de la chambre jaune', 'Gaston Leroux', 'Le Livre de Poche', 'Policier'),
+    ('Les Apparences', 'Gillian Flynn', 'Le Livre de Poche', 'Policier'),
+    ('La Trilogie du mal, Tome 1 : L\'Âme du mal', 'Maxime Chattam', 'Pocket', 'Policier'),
+    ('Avant d\'aller dormir', 'S.J. Watson', 'Pocket', 'Policier'),
+    ('Ne le dis à personne', 'Harlan Coben', 'Pocket', 'Policier'),
+    ('La Femme en vert', 'Arnaldur Indriðason', 'Points', 'Policier'),
+    ('L\'invention de la nature : Alexander von Humboldt et la création d\'un nouveau monde', 'Andrea Wulf', 'Les Arènes', 'Nature'),
+    ('Le Sixième Extinctio', 'Elizabeth Kolbert', 'La Librairie Vuibert', 'Nature'),
+    ('La Vie secrète des arbres', 'Peter Wohlleben', 'Les Arènes', 'Nature'),
+    ('Guide ornitho', 'Lars Svensson', 'Delachaux et Niestlé', 'Nature'),
+    ('Histoire naturelle', 'Pline l\'Ancien', 'Flammarion', 'Nature'),
+    ('L\'origine des espèces', 'Charles Darwin', 'Le Livre de Poche', 'Nature'),
+    ('L\'Homme qui plantait des arbres', 'Jean Giono', 'Gallimard', 'Nature'),
+    ('Le Chant du monde', 'Giono', 'Gallimard', 'Nature'),
+    ('Le Grand Livre des arbres', 'Dominique Mansion', 'Delachaux et Niestlé', 'Nature'),
+    ('Mycelium : Le réseau invisible qui nourrit les plantes', 'Guy Redeuilh', 'Actes Sud', 'Nature'),
+    ('La Vie secrète des animaux', 'Peter Wohlleben', 'Les Arènes', 'Nature'),
+    ('L\'intelligence des plantes', 'Stefano Mancuso', 'Albin Michel', 'Nature'),
+    ('La Disparition des lucioles', 'Cynthia Fleury', 'Gallimard', 'Nature'),
+    ('La Forêt-jardin', 'Martin Crawford', 'Rustica Éditions', 'Nature'),
+    ('Demain, les animaux du futur', 'Dougal Dixon', 'Delachaux et Niestlé', 'Nature'),
+    ('L\'Âge des low tech : Vers une civilisation techniquement soutenable', 'Philippe Bihouix', 'Seuil', 'Nature'),
+    ('Les Orchidées de France, Belgique et Luxembourg', 'Pierre Delforge', 'Belin', 'Nature'),
+    ('La Part sauvage du monde', 'François Terrasson', 'Actes Sud', 'Nature'),
+    ('La Vallée des chevaux', 'Jean M. Auel', 'Presses de la Cité', 'Nature'),
+    ('La Mer', 'Jean-Claude Nocquet', 'Glénat', 'Nature'),
+    ('Les Misérables', 'Victor Hugo', 'Éditions XYZ', 'Littérature'),
+    ('Orgueil et Préjugés', 'Jane Austen', 'Gallimard', 'Littérature'),
+    ('Cent ans de solitude', 'Gabriel García Márquez', 'Folio', 'Littérature'),
+    ('Le vieil homme et la mer', 'Ernest Hemingway', 'Albin Michel', 'Littérature'),
+    ('Méditations', 'Marcus Aurelius', 'Flammarion', 'Littérature'),
+    ('Walden ou la vie dans les bois', 'Henry David Thoreau', 'Le Livre de Poche', 'Littérature'),
+    ('Desert Solitaire', 'Edward Abbey', 'Pocket', 'Littérature'),
+    ('L\'Éloge de la faiblesse', 'Alexandre Jollien', 'Seuil', 'Littérature'),
+    ('Le chant des arbres', 'Tracy Chevalier', 'La Table ronde', 'Littérature'),
+    ('Into the Wild', 'Jon Krakauer', 'Livre de Poche', 'Littérature'),
+    ('L\'île des oubliés', 'Victoria Hislop', 'Pocket', 'Littérature'),
+    ('L\'Envol du papillon', 'Sue Monk Kidd', 'J\'ai lu', 'Littérature'),
+    ('L\'Arbre-monde', 'Richard Powers', 'Le Cherche Midi', 'Littérature'),
+    ('La Mer', 'John Banville', 'Folio', 'Littérature'),
+    ('La Vallée des chevaux', 'Jean M. Auel', 'Presses de la Cité', 'Littérature'),
+    ('Le Parc jurassique', 'Michael Crichton', 'Pocket', 'Littérature'),
+    ('La Ferme des animaux', 'George Orwell', 'Folio', 'Littérature'),
+    ('Le Clan des Otori', 'Lian Hearn', 'Gallimard', 'Littérature'),
+    ('Les Fourmis', 'Bernard Werber', 'Le Livre de Poche', 'Littérature'),
+    ('Le vieil homme qui lisait des romans d\'amour', 'Luis Sepúlveda', 'Métailié', 'Littérature'),
+    ('Le Seigneur des anneaux', 'J.R.R. Tolkien', 'Pocket', 'Fantastique'),
+    ('Harry Potter et le Prisonnier d\'Azkaban', 'J.K. Rowling', 'Gallimard Jeunesse', 'Fantastique'),
+    ('L\'Assassin royal, Tome 1 : L\'Apprenti assassin', 'Robin Hobb', 'J\'ai lu', 'Fantastique'),
+    ('Chroniques de la Lune noire, Tome 1 : Le Signe des Ténèbres', 'François Froideval', 'Dargaud', 'Fantastique'),
+    ('Les Portes du secret, Tome 1 : Le Poison écarlate', 'Maria V. Snyder', 'Harlequin', 'Fantastique'),
+    ('Le Cycle de Pendragon, Tome 1 : Taliesin', 'Stephen R. Lawhead', 'Milady', 'Fantastique'),
+    ('Les Annales du Disque-monde, Tome 1 : La Huitième Couleur', 'Terry Pratchett', 'L\'Atalante', 'Fantastique'),
+    ('Fondation', 'Isaac Asimov', 'Le Livre de Poche', 'Fantastique'),
+    ('American Gods', 'Neil Gaiman', 'Au Diable Vauvert', 'Fantastique'),
+    ('Le Trône de fer, Tome 1 : Le Trône de fer', 'George R.R. Martin', 'J\'ai lu', 'Fantastique'),
+    ('L\'Épée de vérité, Tome 1 : La Première Leçon du sorcier', 'Terry Goodkind', 'Bragelonne', 'Fantastique'),
+    ('Les Dames du lac', 'Marion Zimmer Bradley', 'Pocket', 'Fantastique'),
+    ('Le Nom du vent', 'Patrick Rothfuss', 'Bragelonne', 'Fantastique'),
+    ('L\'Épouvanteur, Tome 1 : L\'Apprenti épouvanteur', 'Joseph Delaney', 'Bayard Jeunesse', 'Fantastique'),
+    ('Les Enfants de Hurin', 'J.R.R. Tolkien', 'Pocket', 'Fantastique'),
+    ('Le Bâtard de Kosigan, Tome 1 : L\'Ombre du pouvoir', 'Fabien Cerutti', 'Mnémos', 'Fantastique'),
+    ('La Passe-miroir, Tome 1 : Les Fiancés de l\'hiver', 'Christelle Dabos', 'Gallimard Jeunesse', 'Fantastique'),
+    ('La Moïra, Tome 1 : La Louve et l\'Enfant', 'Henri Loevenbruck', 'J\'ai lu', 'Fantastique'),
+    ('L\'Ange de la nuit, Tome 1 : La Voie des ombres', 'Brent Weeks', 'Orbit', 'Fantastique'),
+    ('La Belgariade, Tome 1 : Le Pion blanc des présages', 'David Eddings', 'Pocket', 'Fantastique')
+";
+
+
+if ($conn->query($sql) === TRUE) {
+    echo "Les livres ont été insérés avec succès.";
+} else {
+    echo "Erreur lors de l'insertion des livres : " . $conn->error;
+}
+
+?>
